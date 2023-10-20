@@ -7,6 +7,7 @@ export const palettes = {
     textButton: "#FFFFFF",
     textPlaceholder: "#B4B4B4",
     contentView: "#FFFFFF",
+    strokePrimary: "#E0E0E0",
     primary: "#5393F7",
   },
 };

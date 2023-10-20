@@ -4,8 +4,20 @@ import LoginPage from "./src/screens/login";
 import RegisterPage from "./src/screens/register";
 import normalize from "react-native-normalize";
 import { palettes } from "./src/utils/palettes";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    Poppins_400Regular: require("./src/assets/fonts/Poppins-Regular.ttf"),
+    Poppins_500Medium: require("./src/assets/fonts/Poppins-Medium.ttf"),
+    Poppins_600SemiBold: require("./src/assets/fonts/Poppins-SemiBold.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View>
