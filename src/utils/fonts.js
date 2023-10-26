@@ -13,10 +13,22 @@ export const fonts = {
   },
   md3: {
     fontSize: 14,
-    fontFamily: "Poppins-600SemiBold",
+    fontFamily: "Poppins_600SemiBold",
+  },
+  md4: {
+    fontSize: 16,
+    fontFamily: "Poppins_600SemiBold",
   },
   lgHeader: {
     fontSize: 30,
+    fontFamily: "Poppins_600SemiBold",
+  },
+  lgTitle: {
+    fontSize: 24,
+    fontFamily: "Poppins_600SemiBold",
+  },
+  lgSubTitle: {
+    fontSize: 20,
     fontFamily: "Poppins_600SemiBold",
   },
 };
