@@ -19,6 +19,14 @@ export const fonts = {
     fontSize: 16,
     fontFamily: "Poppins_600SemiBold",
   },
+  md5: {
+    fontSize: 18,
+    fontFamily: "Poppins_600SemiBold",
+  },
+  lg1: {
+    fontSize: 22,
+    fontFamily: "Poppins_600SemiBold",
+  },
   lgHeader: {
     fontSize: 30,
     fontFamily: "Poppins_600SemiBold",

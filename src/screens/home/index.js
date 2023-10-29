@@ -1,9 +1,16 @@
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
-import React from "react";
-import styles from "./styles";
+import { View, Text, Image, TouchableOpacity, ScrollView, Alert } from "react-native";
+import React, { useState } from "react";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Icon from "react-native-vector-icons/AntDesign";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
+import ButtonMain from "../../components/atomics/button-main";
+import ProjectListContainer from "../../components/organisms/project-list";
+import styles from "./styles";
 
 const HomePage = () => {
+  const [count, setCount] = useState(0);
+
   const data = [
     {
       id: 1,
@@ -25,41 +32,66 @@ const HomePage = () => {
     },
   ];
 
-  return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={{ alignItems: "center" }}>
-          <Image source={require("../../assets/images/sheren.jpg")} style={styles.imgProfile} />
-          <Text style={styles.title}>Hello, I'm Sheren Aura</Text>
-          <Text style={styles.description}>I'm a Frontend Enthuasiast and I love to learn a lot of things. I'm a student of Vocational HighSchool Telkom Purwokerto and now I'm in 12th grade. Nice to meet you:D</Text>
-          <TouchableOpacity style={styles.btnPrimary}>
-            <Text style={styles.txtBtnPrimary}>Contact me</Text>
-          </TouchableOpacity>
-        </View>
+  const onPressLikes = () => {
+    setCount(count + 1);
+  };
 
-        <View>
-          <Text style={styles.projectTitleContainer}>My Recent Project</Text>
-          {data.map((item) => {
-            return (
-              <View>
-                <View style={styles.projectContainer}>
-                  <Image style={styles.projectImg} source={item.img} />
-                  <View style={styles.descContainer}>
-                    <View style={styles.textContainer}>
-                      <Text style={styles.projectTitle}>{item.title}</Text>
-                      <Text style={styles.projectDesc}>{item.description}</Text>
-                    </View>
-                    <TouchableOpacity style={styles.buttonContainer}>
-                      <Icon style={styles.icon} name="arrowright" size={18} color="#FFFFFF" />
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              </View>
-            );
-          })}
+  const onPressDislikes = () => {
+    if (count === 0) {
+      Alert.alert("Maaf sudah mencapai batas");
+    } else {
+      setCount(count - 1);
+    }
+  };
+
+  const BtnDislikesClicked = () => (
+    <TouchableOpacity onPress={onPressDislikes}>
+      <FontAwesome name="thumbs-down" size={25} />
+    </TouchableOpacity>
+  );
+
+  const BtnLikesClicked = () => (
+    <TouchableOpacity onPress={onPressLikes}>
+      <FontAwesome name="thumbs-up" size={25} />
+    </TouchableOpacity>
+  );
+
+  return (
+    <SafeAreaView>
+      <StatusBar backgroundColor="#FFF9E9" />
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={{ alignItems: "center" }}>
+            <Image source={require("../../assets/images/sheren.jpg")} style={styles.imgProfile} />
+            <Text style={styles.title}>Hello, I'm Sheren Aura</Text>
+            <Text style={styles.description}>I'm a Frontend Enthuasiast and I love to learn a lot of things. I'm a student of Vocational HighSchool Telkom Purwokerto and now I'm in 12th grade. Nice to meet you:D</Text>
+            <ButtonMain checkPrimaryCondition={true} btnStyle={styles.btnPrimary} title="Contact me" textStyle={styles.txtBtnPrimary} />
+          </View>
+
+          <View>
+            <Text style={styles.projectTitleContainer}>My Recent Project</Text>
+
+            {data.map((item) => {
+              return <ProjectListContainer imgSource={item.img} projectTitle={item.title} projectDesc={item.description} />;
+            })}
+          </View>
+
+          <Text style={styles.titleLikes}>Like this pages? </Text>
+          <Text style={styles.likesCount}>{count}</Text>
+
+          <View style={styles.likesContainer}>
+            <View style={styles.btnLikesSection}>
+              <BtnDislikesClicked />
+              <Text style={styles.likesDesc}>Dislikes</Text>
+            </View>
+            <View style={styles.btnLikesSection}>
+              <BtnLikesClicked />
+              <Text style={styles.likesDesc}>Likes</Text>
+            </View>
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

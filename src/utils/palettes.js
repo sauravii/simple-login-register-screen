@@ -11,5 +11,6 @@ export const palettes = {
     strokePrimary: "#E0E0E0",
     primary: "#5393F7",
     secondary: "#F5F9FE",
+    error: "#E5141E",
   },
 };

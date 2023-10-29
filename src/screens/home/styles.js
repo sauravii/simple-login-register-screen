@@ -6,6 +6,7 @@ import { fonts } from "../../utils/fonts";
 export default StyleSheet.create({
   container: {
     paddingTop: normalize(30, "height"),
+    paddingBottom: normalize(30, "height"),
     paddingHorizontal: normalize(30, "width"),
     backgroundColor: palettes.default.contentSecondary,
     flex: 1,
@@ -43,42 +44,29 @@ export default StyleSheet.create({
     textAlign: "center",
     marginTop: 40,
   },
-  projectContainer: {
-    flex: 1,
-    padding: 12,
-  },
-  projectImg: {
-    width: 320,
-    height: 180,
-    alignSelf: "center",
-    borderRadius: 10,
-  },
-  descContainer: {
-    flex: 1,
-    maxHeight: 70,
+  likesContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  textContainer: {
-    flex: 1,
-    maxHeight: 120,
-    maxWidth: 220,
-  },
-  projectTitle: {
-    ...fonts.md4,
-    marginTop: 10,
-  },
-  projectDesc: {
-    ...fonts.md2,
-  },
-  buttonContainer: {
+    gap: 15,
     justifyContent: "center",
-    backgroundColor: palettes.default.primary,
-    marginTop: 10,
-    paddingHorizontal: 15,
-    paddingVertical: 5,
-    maxHeight: 50,
-    maxWidth: 50,
-    borderRadius: 20,
+    marginVertical: 6,
+  },
+  btnLikesSection: {
+    flexDirection: "row",
+    gap: 6,
+    alignItems: "center",
+  },
+  titleLikes: {
+    ...fonts.md5,
+    marginBottom: 8,
+    marginTop: 40,
+    textAlign: "center",
+  },
+  likesCount: {
+    ...fonts.lg1,
+    textAlign: "center",
+    color: palettes.default.error,
+  },
+  likesDesc: {
+    ...fonts.md3,
   },
 });

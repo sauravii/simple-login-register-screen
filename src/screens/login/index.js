@@ -3,6 +3,8 @@ import { Text, StyleSheet, View, TextInput, Image, TouchableOpacity } from "reac
 import { SafeAreaView } from "react-native-safe-area-context";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
+import ButtonMain from "../../components/atomics/button-main";
+import InputTextMain from "../../components/molecules/input-text-main";
 
 const LoginPage = ({ navigation }) => {
   const [showPassword, setShowPassowrd] = useState(true);
@@ -35,34 +37,23 @@ const LoginPage = ({ navigation }) => {
 
         {/* body-form */}
         <View style={{ gap: 18 }}>
-          <TextInput placeholder="Username" style={styles.formStyle} />
-          <View style={styles.inputContainer}>
-            <TextInput placeholder="Password" secureTextEntry={showPassword} />
-            <ShowPassword />
-          </View>
-          <TouchableOpacity style={{ alignItems: "flex-end" }}>
-            <Text style={styles.subHeaderFont}>Lupa Password?</Text>
-          </TouchableOpacity>
+          <InputTextMain placeholder="Username" formStyle={styles.formStyle} />
+          <InputTextMain customInputStyle={styles.inputContainer} placeholder="Password" secureText={showPassword} customRightIcon={<ShowPassword />} />
+          <ButtonMain checkPrimaryCondition={true} title="Lupa Password?" textStyle={styles.subHeaderFont} btnStyle={{ alignItems: "flex-end" }} />
         </View>
 
         {/* footer */}
         <View style={styles.footerContainer}>
-          <TouchableOpacity style={styles.btnPrimary} onPress={handleHomePage}>
-            <Text style={styles.txtBtnPrimary}>Masuk</Text>
-          </TouchableOpacity>
+          <ButtonMain checkPrimaryCondition={true} onPress={handleHomePage} btnStyle={styles.btnPrimary} title="Masuk" textStyle={styles.txtBtnPrimary} />
           <View style={styles.separatorStyle}>
             <Image source={require("../../assets/images/stroke.png")} style={{ width: 109 }} />
             <Text style={styles.separatorFont}>Continue With</Text>
             <Image source={require("../../assets/images/stroke.png")} style={{ width: 109 }} />
           </View>
-          <TouchableOpacity style={styles.btnSecondary}>
-            <Text style={styles.txtBtnSecondary}>Google</Text>
-          </TouchableOpacity>
+          <ButtonMain checkPrimaryCondition={true} btnStyle={styles.btnSecondary} title="Google" textStyle={styles.txtBtnSecondary} />
           <View style={styles.confirmContainer}>
             <Text style={styles.subHeaderFont}>Belum punya akun?</Text>
-            <TouchableOpacity onPress={handleRegister}>
-              <Text style={styles.confirmStyle}>Daftar</Text>
-            </TouchableOpacity>
+            <ButtonMain checkPrimaryCondition={true} title="Daftar" textStyle={styles.confirmStyle} onPress={handleRegister} />
           </View>
         </View>
       </View>
